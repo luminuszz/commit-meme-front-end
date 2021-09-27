@@ -5,6 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
 
 import "../styles/globals.css";
+import { theme } from "../styles/theme";
 
 export type NextPageWithLayout<T = any> = NextPage<T> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -23,13 +24,13 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getTitle =
     `${defaultTitle} | ${Component.pageTitle} ` ?? `${defaultTitle}`;
 
-  return getLayout(
-    <ChakraProvider>
+  return (
+    <ChakraProvider theme={theme}>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <title>{getTitle}</title>
       </Head>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </ChakraProvider>
   );
 }

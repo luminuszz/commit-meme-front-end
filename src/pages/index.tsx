@@ -1,4 +1,4 @@
-import { Container, Flex, Text, VStack } from "@chakra-ui/react";
+import { Container, Flex, Image, Text, VStack } from "@chakra-ui/react";
 import axios from "axios";
 import useSWR from "swr";
 
@@ -38,13 +38,13 @@ const Home: NextPageWithLayout<ResponseData> = ({
 
   return (
     <Container maxW="xl2" centerContent>
-      <Flex mt={2}>
-        <Text textAlign="center" fontSize="55px">
-          Commit-Meme
+      <Flex mt={2} flexDir="column-reverse" align="center">
+        <Text textAlign="center" fontSize="55px" fontStyle="italic">
+          Commit Meme
         </Text>
       </Flex>
 
-      <Flex justify="center" align="center" h="100vh" flexDir="column">
+      <Flex align="center" h="100vh" flexDir="column" mt={20}>
         {data ? (
           <VStack gridGap="10px">
             <Text textAlign="center" fontSize="40px" fontStyle="italic">
